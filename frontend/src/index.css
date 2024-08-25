@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Questrial&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 2;
+}
+
+body{
+  background-color: #101010;
+}
+
+
+ul{
+  list-style-type: none;
+}
+
+h1, h4, p, a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-light{
+  background-color: #6464648d;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  border-radius: 5%;
+  margin-right: 1rem;
+  border: none;
+}
+
+.btn-light:hover{
+  background-color: #6464643d
+}
+
+.hero{
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mask img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8));
+  z-index: 2;
+}
+
+.logo{
+  z-index: 10;
+  position: absolute;
+  background-color: transparent;
+  transform: translate(10%, 0%);
+  top: 5%;
+  left: 5%;
+  text-align: right;
+  width: 150px;
+}
+
+.logo img{
+  background-color: transparent;
+}
+
+.btn{
+  background-color: red;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.btn:hover{
+  background-color: rgb(208, 0, 0);
+}
+
+.hero .btn{
+  z-index: 10;
+  position: absolute;
+  transform: translate(0%, 0%);
+  top: 5%;
+  right: 5%;
+}
+
+.btn h3{
+  margin: 0;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.header h1 {
+  margin: 0;
+  font-weight: 200;
+  font-size: 4rem;
+  color: white;
+  background-color: transparent;
+}
+
+.header h4 {
+  margin: 2rem 0 0;
+  font-weight: 200;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: transparent;
+}
+
+.input-box {
+  background-color: transparent;
+  margin: 1rem;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  gap: .5rem;
+  width: 600px;
+}
+
+.email-input {
+  flex-basis: 80%;
+  background-color: rgba(99, 99, 99, 0.25);
+  border: 1px solid white;
+  padding: 0.8rem 1rem;
+  font-size: .75rem;
+  color: white;
+  border-radius: 5px; /* Space between input and button */
+}
+
+.go-btn {
+  flex-basis: 25%;
+  background-color: #ff0000; 
+  border: 1px solid red;
+  padding: 0.8rem 1rem;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  text-align: center; /* Vertically center the text inside the button */
+}
+
+.go-btn h3 {
+  margin: auto;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.header-box {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 1rem;
+  width: 25%;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.header-box .inputs{
+  text-align: left;
+}
+
+.header-box h1{
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-box .inputs{
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.horizontal-container {
+  display: flex;
+  background-color: transparent;
+  align-items:baseline; 
+  margin-top: 2rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.horizontal-container h4 {
+  margin: 0;
+  background-color: transparent;
+  color: #ffffff74;
+  font-weight: 200;
+  margin-right: 0.5rem;
+  font-size: .9rem;
+}
+
+.sign-btn {
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: 400;
+  cursor: pointer; 
+  font-size: 1rem;
+}
+
+.sign-btn:hover {
+  text-decoration: underline;
+}

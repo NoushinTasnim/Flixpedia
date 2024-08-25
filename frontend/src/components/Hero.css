@@ -1,0 +1,115 @@
+.hero1 {
+    width: 100%;
+    height: 100%;
+}
+
+.mask1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.7));
+    z-index: 2;
+  }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height */
+    overflow: hidden;
+    z-index: 1;
+}
+
+.video-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.video-container::after {
+    content: '';
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.449); 
+    z-index: 2;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    z-index: 1;
+}
+
+.hero1 .poster{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    text-align: left;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: 30;
+}
+
+.hero1 .txt{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    text-align: left;
+    z-index: 3;
+}
+
+.hero1 .txt h1{
+    font-size: 3.5rem;
+    font-family: "Rye", serif;
+    letter-spacing: 5px;
+}
+
+.hero1 .txt h4{
+    padding: 1rem 0 .2rem;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.hero1 .txt p{
+    padding: .2rem 0;
+    max-width: 350px;
+    font-size: .75rem;
+    font-weight: 100;
+}
+
+.btns{
+    padding: 2rem 0; 
+    display: flex;
+    margin: auto;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mute{
+    position: absolute;
+    transform: translate(-50%, 0%);
+    top: 80%;
+    right: 0%;
+    text-align: left;
+    z-index: 3;
+    border: 2px solid white;
+    border-radius: 100%;
+    padding: .4rem .5rem;
+    margin: 1rem 4rem;
+}
+
+.mute:hover{
+    background-color: rgba(255, 255, 255, 0.199);
+}

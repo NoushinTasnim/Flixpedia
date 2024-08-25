@@ -1,0 +1,19 @@
+.trending-box {
+    width: 100%;
+    overflow-x: auto; 
+    margin: 2rem 4rem;
+    white-space: nowrap; 
+    padding: 1rem;
+  }
+
+.trending-box h1{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+  
+  .trending {
+    display: flex;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+  
