@@ -3,6 +3,7 @@
     display: flex;
     align-items: stretch; /* Ensure both images are on the same baseline */
     position: relative;
+    margin-right: -2rem;
 }
 
 .rank {

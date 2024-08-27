@@ -1,5 +1,5 @@
 import express from 'express';
-import { getContentCategory, getContentDetails, getContentKeywords, getContentReviews, getContentTrailers, getContentWatchProviders, getSimilarContents, getTopContents, getTrendingContent } from '../controller/content.controller.js';
+import { getCasts, getContentCategory, getContentDetails, getContentKeywords, getContentReviews, getContentTrailers, getContentWatchProviders, getSimilarContents, getTopContents, getTrendingContent } from '../controller/content.controller.js';
 
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.get('/:id/details', getContentDetails('tv'));
 router.get('/:id/keywords', getContentKeywords('tv'));
 router.get('/:id/reviews', getContentReviews('tv'));
 router.get('/:id/similar', getSimilarContents('tv'));
+router.get('/:id/cast', getCasts('tv'));
 router.get('/:id/watch/providers', getContentWatchProviders('tv'));
 
 export default router;

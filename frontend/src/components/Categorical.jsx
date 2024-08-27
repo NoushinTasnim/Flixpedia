@@ -28,32 +28,36 @@ const Categorical = ({category}) => {
       if(sliderRef.current){
         sliderRef.current.scrollBy({
           left: -sliderRef.current.offsetWidth,
-          behaviour: 'smooth'
+          behavior: 'smooth'
         });
       }
     };
     const scrollRight = () => {
       sliderRef.current.scrollBy({
-        left: -sliderRef.current.offsetWidth,
+        left: sliderRef.current.offsetWidth,
         behavior: 'smooth'
       })
     };
     return (
     <div 
-      className='categorical-box' 
+      className='relative text-white px-5 md:px-20' 
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}
     >
-      <h1>{formattedCategoryName + formattedContentType}</h1>
-      <div className='categorical' ref={sliderRef} >
+      <h1 className='mt-20 mb-0 text-2xl font-bold'>
+        {formattedCategoryName + formattedContentType}
+      </h1>
+      <div className='flex space-x-8 overflow-x-scroll scrollbar-hide mt-8' ref={sliderRef} >
         {content.map((item)=> <CategoricalBox key={item.id} item={item}/>)}        
       </div>
       {showArrows && (
-        <div className='arrows'>
-          <button onClick={scrollLeft}>
+        <div>
+          <button className='absolute top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10' onClick={scrollLeft}>
             <FaAngleLeft/>
           </button>
-          <button onClick={scrollRight}>
+          <button 
+          className='absolute top-1/2 -translate-y-1/2 right-5 md:right-24 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10' 
+          onClick={scrollRight}>
             <FaAngleRight/>
           </button>
         </div>

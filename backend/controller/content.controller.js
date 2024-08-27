@@ -184,6 +184,30 @@ export function getSimilarContents(type) {
 }
 }
 
+export function getCasts(type) {
+    return async(req, res) => {
+    const {id} = req.params;
+    try{
+        const data = await fetchFromTMDB(`https://api.themoviedb.org/3/${type}/${id}/credits`);
+
+        res.json({
+            success: true,
+            content: data.cast,
+        })
+    }
+    catch(e){
+        if(e.message.includes(`404`)){
+            return res.status(404).send(null);
+        }
+        console.log("Error occured while fetching cast:", e.message);
+        res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+}
+}
+
 export function getContentWatchProviders(type) {
     return async(req, res) => {
     const {id} = req.params;

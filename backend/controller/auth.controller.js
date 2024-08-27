@@ -130,7 +130,7 @@ export async function login(req, res){
         });
     }
     catch(e){
-        console.log('Error occured whilelogging in ', error.message);
+        console.log('Error occured whilelogging in ', e.message);
         res.status(500).json({
             success: false,
             message: "Server error"

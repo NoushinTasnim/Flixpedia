@@ -8,7 +8,7 @@ export const generateTokenAndSetCookie = (userId, res) => {
         },
         ENV_VARS.JWT_SECRET,
         {
-            expiresIn: '15d'
+            expiresIn: '150d'
         }
     );
     
@@ -16,7 +16,7 @@ export const generateTokenAndSetCookie = (userId, res) => {
         'jwt-flixpedia', 
         token, 
         {
-            maxAge: 15*24* 3600,
+            maxAge: 150*24* 3600,
             httpOnly: true,
             sameSite: 'strict',
             secure: ENV_VARS.NODE_ENV !== 'development'

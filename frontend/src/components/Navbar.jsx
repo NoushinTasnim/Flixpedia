@@ -1,5 +1,5 @@
-import React from 'react';
-import Logo from '../assets/logo.svg';
+import React, { useState } from 'react';
+import Logo from '../assets/logo2.svg';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaSignOutAlt } from 'react-icons/fa';
@@ -8,14 +8,27 @@ import { useContentStore } from '../store/content';
 
 const Navbar = () => {
     const {user, logOut} = useAuthStore();
-    console.log(user.image);
     const {setContentType} = useContentStore();
+    const [click, setclick]= useState(false);
+    const handleClick = () => setclick(!click);
+
+    const [color, setColor] = useState(false);
+    const changeColor = ()=>{
+        if(window.scrollY >=100){
+        setColor(true);
+        }
+        else{
+        setColor(false);
+        }
+    };
+
+    window.addEventListener("scroll", changeColor);
 
     return (
-        <div className='navbar'>
+        <div className={color ? "navbar navbar-bg" : "navbar"}>
             <div className='navbar-left'>
                 <Link to='/'>
-                    <img src={Logo} style={{ width: '100px'}} />
+                    <img src={Logo} style={{ width: '150px'}} />
                 </Link>
                     <ul className='nav-menu'>
                         <li>
@@ -33,7 +46,7 @@ const Navbar = () => {
                 <button>
                     <FaSearch size={24}></FaSearch>
                 </button>
-                <img src={user.image} height={'24px'}/>
+                <img src={user.image} className='h-8'/>
                 <button>
                     <FaSignOutAlt size={24}></FaSignOutAlt>
                 </button>
