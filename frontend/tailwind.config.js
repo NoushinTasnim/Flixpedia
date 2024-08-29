@@ -6,7 +6,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        rye: ['Rye', 'sans-serif'],
+      },
+      screens: {
+        'xs': '420px',
+        'xxs': '370px',
+      },
+    },
   },
   plugins: [
     tailwindScrollbarHide

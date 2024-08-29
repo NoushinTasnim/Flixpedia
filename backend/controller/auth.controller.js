@@ -80,7 +80,6 @@ export async function signup(req, res){
         });
     }
     catch(e){
-        console.log("Error occured while signing up:", e.message);
         res.status(500).json({
             success: false,
             message: "Server error"
@@ -130,7 +129,6 @@ export async function login(req, res){
         });
     }
     catch(e){
-        console.log('Error occured whilelogging in ', e.message);
         res.status(500).json({
             success: false,
             message: "Server error"
@@ -150,7 +148,6 @@ export async function logout(req, res){
         });
     }
     catch(e){
-        console.log("Error occured while logging out:", e.message);
         res.status(500).json({
             success: false,
             message: "Server error"
@@ -166,10 +163,9 @@ export async function authCheck(req, res){
         });
     }
     catch(e){
-        console.log("Error occured :", e.message);
         res.status(500).json({
             success: false,
-            message: "Server error"
+            message: `Server error${e.message}`
         });
     }
 }

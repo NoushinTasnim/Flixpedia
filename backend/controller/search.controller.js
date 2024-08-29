@@ -28,7 +28,6 @@ export async function getSearchedMovie(req, res){
             })
         }
         catch(e){
-            console.log("Error occured while fetching:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -63,7 +62,6 @@ export async function getSearchedTVShow(req, res){
             })
         }
         catch(e){
-            console.log("Error occured while fetching:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -73,7 +71,6 @@ export async function getSearchedTVShow(req, res){
 
 export async function getSearchedPerson(req, res){
     const {query} = req.params;
-    console.log(query);
         try{
             const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}`);
 
@@ -99,7 +96,6 @@ export async function getSearchedPerson(req, res){
             })
         }
         catch(e){
-            console.log("Error occured while fetching:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -116,7 +112,6 @@ export async function getSearchHistory(req, res){
             })
         }
         catch(e){
-            console.log("Error occured while fetching:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -143,7 +138,6 @@ export async function deleteSearchedContent(req, res){
         })
     }
     catch(e){
-        console.log("Error occured while fetching:", e.message);
         res.status(500).json({
             success: false,
             message: "Server error"

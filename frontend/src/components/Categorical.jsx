@@ -44,10 +44,10 @@ const Categorical = ({category}) => {
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}
     >
-      <h1 className='mt-20 mb-0 text-2xl font-bold'>
+      <h1 className='mt-16 mb-0 text-lg lg:text-2xl font-bold'>
         {formattedCategoryName + formattedContentType}
       </h1>
-      <div className='flex space-x-8 overflow-x-scroll scrollbar-hide mt-8' ref={sliderRef} >
+      <div className='flex space-x-4 sm:space-x-8 overflow-x-scroll scrollbar-hide mt-8' ref={sliderRef} >
         {content.map((item)=> <CategoricalBox key={item.id} item={item}/>)}        
       </div>
       {showArrows && (

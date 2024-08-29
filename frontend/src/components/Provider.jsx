@@ -2,7 +2,6 @@ import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import PropTypes from 'prop-types';
 
 const Provider = ({ content }) => {
-    console.log(content);
     return (
       <div>
         {Object.entries(content).map(([countryCode, countryData]) => (

@@ -12,7 +12,6 @@ export function getContentCategory(type) {
             })
         }
         catch(e){
-            console.log("Error occured while fetching:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -35,7 +34,6 @@ export function getTrendingContent(type) {
             })
         }
         catch(e){
-            console.log("Error occured while fetching content:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -55,7 +53,6 @@ export function getTopContents(type) {
             })
         }
         catch(e){
-            console.log("Error occured while fetching contents:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -79,7 +76,6 @@ export function getContentTrailers(type) {
             if(e.message.includes(`404`)){
                 return res.status(404).send(null);
             }
-            console.log("Error occured while fetching trailers:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -103,7 +99,6 @@ export function getContentDetails(type) {
             if(e.message.includes(`404`)){
                 return res.status(404).send(null);
             }
-            console.log("Error occured while fetching trailers:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -127,7 +122,6 @@ export function getContentKeywords(type) {
             if(e.message.includes(`404`)){
                 return res.status(404).send(null);
             }
-            console.log("Error occured while fetching trailers:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -151,7 +145,6 @@ export function getContentReviews(type) {
             if(e.message.includes(`404`)){
                 return res.status(404).send(null);
             }
-            console.log("Error occured while fetching trailers:", e.message);
             res.status(500).json({
                 success: false,
                 message: "Server error"
@@ -175,7 +168,6 @@ export function getSimilarContents(type) {
         if(e.message.includes(`404`)){
             return res.status(404).send(null);
         }
-        console.log("Error occured while fetching trailers:", e.message);
         res.status(500).json({
             success: false,
             message: "Server error"
@@ -199,35 +191,56 @@ export function getCasts(type) {
         if(e.message.includes(`404`)){
             return res.status(404).send(null);
         }
-        console.log("Error occured while fetching cast:", e.message);
         res.status(500).json({
             success: false,
             message: "Server error"
         });
     }
 }
+}
+
+export function getContentPosters(type) {
+    return async(req, res) => {
+        const {id} = req.params;
+        try{
+            const data = await fetchFromTMDB(`https://api.themoviedb.org/3/${type}/${id}/images`);
+
+            res.json({
+                success: true,
+                content: data.posters,
+            })
+        }
+        catch(e){
+            if(e.message.includes(`404`)){
+                return res.status(404).send(null);
+            }
+            res.status(500).json({
+                success: false,
+                message: "Server error"
+            });
+        }
+    }   
 }
 
 export function getContentWatchProviders(type) {
     return async(req, res) => {
-    const {id} = req.params;
-    try{
-        const data = await fetchFromTMDB(`https://api.themoviedb.org/3/${type}/${id}/watch/providers`);
+        const {id} = req.params;
+        try{
+            const data = await fetchFromTMDB(`https://api.themoviedb.org/3/${type}/${id}/watch/providers`);
 
-        res.json({
-            success: true,
-            content: data.results,
-        })
-    }
-    catch(e){
-        if(e.message.includes(`404`)){
-            return res.status(404).send(null);
+            res.json({
+                success: true,
+                content: data.results,
+            })
         }
-        console.log("Error occured while fetching trailers:", e.message);
-        res.status(500).json({
-            success: false,
-            message: "Server error"
-        });
-    }
-}
+        catch(e){
+            if(e.message.includes(`404`)){
+                return res.status(404).send(null);
+            }
+            res.status(500).json({
+                success: false,
+                message: "Server error"
+            });
+        }
+    }   
 }

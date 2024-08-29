@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Trend from '../components/Trend';
-import './Trending.css';
 import one from '../assets/1.svg'
 import two from '../assets/2.svg'
 import three from '../assets/3.svg'
@@ -59,12 +58,11 @@ const Trending = () => {
         })
       };
     
-    console.log(content);
     return (
         <div className='relative text-white px-5 md:px-20'
         onMouseEnter={() => setShowArrows(true)}
         onMouseLeave={() => setShowArrows(false)}>
-            <h1 className='mt-20 mb-0 text-2xl font-bold'>
+            <h1 className='mt-16 mb-0 text-lg lg:text-2xl font-bold'>
                 Trending Today
             </h1>
             <div className='flex space-x-8 overflow-x-scroll mt-8 scrollbar-hide' ref={sliderRef}>

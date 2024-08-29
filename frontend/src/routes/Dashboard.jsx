@@ -16,7 +16,7 @@ const Dashboard = () => {
       <Navbar/>
       <Hero/>
       <Trending/>
-      <div>
+      <div className='pb-16'>
       {contentType === 'movie' 
           ? MOVIE_CATEGORIES.map((category) => <Categorical key={category} category={category}/>)
           : TV_CATEGORIES.map((category) => <Categorical key={category} category={category}/>)}

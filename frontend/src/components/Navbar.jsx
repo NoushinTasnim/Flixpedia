@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../assets/logo2.svg';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaSearch, FaSignOutAlt, FaTimes } from 'react-icons/fa';
 import { useAuthStore } from '../store/authUser';
 import { useContentStore } from '../store/content';
 
@@ -25,32 +25,93 @@ const Navbar = () => {
     window.addEventListener("scroll", changeColor);
 
     return (
-        <div className={color ? "navbar navbar-bg" : "navbar"}>
-            <div className='navbar-left'>
+        <div className={color ?
+             "w-full justify-between items-center px-4 sm:px-8 py-4 fixed h-[60px] z-40 flex bg-[#101010] transition-opacity duration-500-" : 
+             "w-full justify-between items-center px-4 sm:px-8 py-4 fixed h-[60px] z-40 flex"
+            }
+        >
+            <div className='flex justify-evenly items-center sm:space-x-16'>
                 <Link to='/'>
-                    <img src={Logo} style={{ width: '150px'}} />
+                    <img src={Logo} className='w-[100px] sm:w-[150px]'/>
                 </Link>
-                    <ul className='nav-menu'>
-                        <li>
-                            <Link to=''>Home</Link>
+                    <ul className='hidden sm:flex tracking-normal font-light'>
+                        <li className='px-4'>
+                            <Link to='' className=' text-[#e7e7e7] hover:text-[#ffffff9b]'>Home</Link>
                         </li>
-                        <li>
-                            <Link to='' onClick={()=>setContentType('tv')}>Series</Link>
+                        <li className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'>
+                            <Link 
+                                to='/Dashboard' 
+                                onClick={()=>setContentType('tv')}
+                                className=' text-[#e7e7e7] hover:text-[#ffffff9b]'
+                            >
+                                Series
+                            </Link>
                         </li>
-                        <li>
-                            <Link to='' onClick={()=>setContentType('movie')}>Movies</Link>
+                        <li className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'>
+                            <Link 
+                                to='/Dashboard' 
+                                onClick={()=>setContentType('movie')}
+                                className=' text-[#e7e7e7] hover:text-[#ffffff9b]'
+                            >
+                                Movies
+                            </Link>
                         </li>
                     </ul>
             </div>
-            <div className='navbar-right'>
-                <button>
+            <div className='flex justify-evenly space-x-4 sm:space-x-8 items-center'>
+                <button className='text-white'>
                     <FaSearch size={24}></FaSearch>
                 </button>
-                <img src={user.image} className='h-8'/>
-                <button>
-                    <FaSignOutAlt size={24}></FaSignOutAlt>
-                </button>
+                <img src={user.image} className='h-8 rounded'/>
+                <div className='hidden sm:flex text-white cursor-pointer'>
+                    <FaSignOutAlt onClick={logOut} size={24}></FaSignOutAlt>
+                </div>
+                <div className="sm:hidden z-20" onClick={handleClick}>
+                    {click ? 
+                    <FaTimes size={20} style={{color:"#fff"}}/>
+                    :
+                    <FaBars size={20} style={{color:"#fff"}}/>
+                    }
+                </div>
             </div>
+            {click && (
+                <ul className='absolute w-full z-10 top-16 left-0 space-y-4 bg-[#101010cc] sm:hidden flex-col text-center justify-center m-auto tracking-normal font-light'>
+                <li className='py-2 w-full hover:bg-[#ffffff11]'>
+                    <Link 
+                        to='/Dashboard' 
+                        onClick={()=>{
+                            setContentType('tv');
+                            setclick(false);
+                        }}
+                        className=' text-[#e7e7e7] hover:text-[#ffffff]'
+                    >
+                        Series
+                    </Link>
+                </li>
+                <li className='py-2 w-full hover:bg-[#ffffff11]'>
+                    <Link 
+                        to='/Dashboard' 
+                        onClick={()=>{
+                            setContentType('movie');
+                            setclick(false);
+                        }}
+                        className=' text-[#e7e7e7] hover:text-[#ffffff]'
+                    >
+                        Movies
+                    </Link>
+                </li>
+                <li className='py-2 w-full hover:bg-[#ffffff11]'>
+                    <Link 
+                        onClick={()=>{
+                            setclick(false);
+                            logOut;
+                        }}
+                        className=' text-[#e7e7e7] hover:text-[#ffffff]'
+                    >
+                        Log Out
+                    </Link>
+                </li>
+            </ul>)}
         </div>
     )
 }
