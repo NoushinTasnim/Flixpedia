@@ -11,6 +11,8 @@ import WatchProviders from "./components/WatchProviders"
 import Reviews from "./routes/Reviews"
 import { Loader } from 'lucide-react'
 import CastDetails from "./routes/CastDetails"
+import NotFound from "./routes/NotFound"
+import SearchPage from "./routes/SearchPage"
 
 function App() {
   const {user, isAuthChecking, authCheck} = useAuthStore();
@@ -42,6 +44,8 @@ function App() {
         <Route path="/watch-providers/:id" element={user ? <WatchProviders/> : <Navigate to={'/login'}/>} />
         <Route path="/reviews/:id" element={user ? <Reviews/> : <Navigate to={'/login'}/>} />
         <Route path="/cast/:id" element={user ? <CastDetails/> : <Navigate to={'/login'}/>} />
+        <Route path="/search" element= {user ? <SearchPage/> : <Navigate to={'/login'}/>} />
+        <Route path="/not_found" element= {<NotFound/>} />
       </Routes>
       <Toaster/>
     </>

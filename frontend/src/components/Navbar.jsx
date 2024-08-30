@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Logo from '../assets/logo2.svg';
-import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FaBars, FaSearch, FaSignOutAlt, FaTimes } from 'react-icons/fa';
 import { useAuthStore } from '../store/authUser';
@@ -30,13 +29,19 @@ const Navbar = () => {
              "w-full justify-between items-center px-4 sm:px-8 py-4 fixed h-[60px] z-40 flex"
             }
         >
-            <div className='flex justify-evenly items-center sm:space-x-16'>
+            <div className='flex justify-center items-center sm:space-x-16'>
                 <Link to='/'>
                     <img src={Logo} className='w-[100px] sm:w-[150px]'/>
                 </Link>
                     <ul className='hidden sm:flex tracking-normal font-light'>
-                        <li className='px-4'>
-                            <Link to='' className=' text-[#e7e7e7] hover:text-[#ffffff9b]'>Home</Link>
+                        <li className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'>
+                            <Link 
+                                to='/Dashboard' 
+                                onClick={()=>setContentType('movie')}
+                                className=' text-[#e7e7e7] hover:text-[#ffffff9b]'
+                            >
+                                Movies
+                            </Link>
                         </li>
                         <li className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'>
                             <Link 
@@ -47,21 +52,12 @@ const Navbar = () => {
                                 Series
                             </Link>
                         </li>
-                        <li className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'>
-                            <Link 
-                                to='/Dashboard' 
-                                onClick={()=>setContentType('movie')}
-                                className=' text-[#e7e7e7] hover:text-[#ffffff9b]'
-                            >
-                                Movies
-                            </Link>
-                        </li>
                     </ul>
             </div>
             <div className='flex justify-evenly space-x-4 sm:space-x-8 items-center'>
-                <button className='text-white'>
+                <Link to='/search' className='text-white'>
                     <FaSearch size={24}></FaSearch>
-                </button>
+                </Link>
                 <img src={user.image} className='h-8 rounded'/>
                 <div className='hidden sm:flex text-white cursor-pointer'>
                     <FaSignOutAlt onClick={logOut} size={24}></FaSignOutAlt>
@@ -102,10 +98,7 @@ const Navbar = () => {
                 </li>
                 <li className='py-2 w-full hover:bg-[#ffffff11]'>
                     <Link 
-                        onClick={()=>{
-                            setclick(false);
-                            logOut;
-                        }}
+                        onClick={logOut}
                         className=' text-[#e7e7e7] hover:text-[#ffffff]'
                     >
                         Log Out

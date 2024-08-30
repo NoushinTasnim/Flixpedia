@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         rye: ['Rye', 'sans-serif'],
+        orbitron: ["Orbitron", 'sans-serif']
       },
       screens: {
         'xs': '420px',
