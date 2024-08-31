@@ -29,3 +29,8 @@
 <img src='https://github.com/NoushinTasnim/Flixpedia/blob/main/screencapture-flixpedia-onrender-search-2024-08-31-23_08_25.png' style="width: 1080px;" />
 <h1>Search Cast & Crews</h1>
 <img src='https://github.com/NoushinTasnim/Flixpedia/blob/main/screencapture-flixpedia-onrender-search-2024-08-31-23_09_08.png' style="width: 1080px;" />
+
+<h1>Content Reviews</h1>
+<img src='https://github.com/NoushinTasnim/Flixpedia/blob/main/screencapture-flixpedia-onrender-reviews-155-2024-08-31-23_54_28.png' style="width: 1080px;" />
+<h1>Content Watch Providers (Country wise)</h1>
+<img src='https://github.com/NoushinTasnim/Flixpedia/blob/main/screencapture-flixpedia-onrender-watch-providers-456-2024-08-31-23_55_24.png' style="width: 1080px;" />
