@@ -67,7 +67,6 @@ const Trending = () => {
     return (
         <div 
             data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom" 
             className='relative text-white px-5 md:px-20'
             onMouseEnter={() => setShowArrows(true)}
             onMouseLeave={() => setShowArrows(false)}

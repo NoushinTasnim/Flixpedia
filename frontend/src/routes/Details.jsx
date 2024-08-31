@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import {Link, useNavigate, useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { useContentStore } from '../store/content';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaBookmark } from 'react-icons/fa';
 import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from '../utils/constants';
 import CategoricalBox from '../components/CategoricalBox';
 import man from '../assets/images.png';
@@ -11,12 +11,14 @@ import countries from '../utils/countries';
 import Navbar from '../components/Navbar';
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { saveContent } from '../store/saveContent';
 
 const Details = () => {
     useEffect(()=>{
         Aos.init();
       },[])
 
+    const {saveMovie, saveSeries} = saveContent();
     const {id} = useParams();
     const [trailers, setTrailers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -160,7 +162,7 @@ const Details = () => {
             <div className='w-full h-[50vh] rounded-lg justify-center top-0'>
                 <div className="h-[50vh] relative after:content-[''] after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/50 after:via-black/40 after:to-[#101010] after:z-10">
                     <div className="relative w-full h-[50vh] overflow-hidden z-1">
-                        <div className='relative items-center justify-center'>
+                        <div className='relative items-center justify-center rounded-lg bg-white '>
                             {loading && (
                                 <div className='top-0 left-0 w-full bg-[#101010] flex items-center justify-center -z-10 shimmer'/>
                             )}
@@ -169,7 +171,7 @@ const Details = () => {
                                 className='w-full h-[50vh] object-cover'
                                 onLoad={()=>{setLoading(false)}}
                             />
-                            <div className='space-y-1 lg:space-y-4 capitalize absolute top-2/3 lg:top-1/4 right-4 lg:right-[10%] text-right z-20'>
+                            <div className='space-y-1 lg:space-y-4 capitalize absolute top-3/4 lg:top-1/4 right-4 lg:right-[10%] text-right z-20'>
                                 <h1 className='text-2xl lg:text-7xl font-extrabold'>{content?.title ? content.title : content.name}</h1>
                                 <h1 className='capitalize text-right font-medium text-white text-xs lg:text-2xl z-20'>{content?.tagline}</h1>
                             </div>
@@ -177,9 +179,28 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+            <div 
+                onClick={()=>{
+                    if (contentType === 'movie') {
+                        saveMovie({
+                            id: content.id,
+                            poster_path: content.poster_path
+                        });
+                    } else if (contentType === 'tv') {
+                        saveSeries({
+                            id: content.id,
+                            poster_path: content.poster_path
+                        });
+                    }                    
+                }} 
+                className='flex justify-end px-24 items-center space-x-2 text-red-500 cursor-pointer'
+            >
+                <h1 className='text-red-500 font-bold text-lg hover:text-white'>Add To My List</h1>
+                <FaBookmark className='hover:text-white' size={30}/>
+            </div>
             <div className='flex-col sm:flex sm:flex-row p-4 lg:p-12 items-center lg:items-start justify-center'>
                 {posters?.length > 0 && (
-                    <div className='relative my-auto flex items-center justify-center'>
+                    <div className='relative my-auto flex items-center justify-center '>
                         <button 
                             className='top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10' 
                             onClick={() => setPosterIdx((posterIdx - 1 + posters.length) % posters.length)}
@@ -191,7 +212,7 @@ const Details = () => {
                         )}
                         <img 
                             data-aos="fade-right"
-                            className='h-[40vh] rounded-xl'
+                            className='h-[40vh] rounded-xl '
                             onLoad={()=>{setPosterLoading(false)}}
                             src={ORIGINAL_IMG_BASE_URL + posters[posterIdx].file_path}
                         />
@@ -280,12 +301,11 @@ const Details = () => {
             {cast?.length > 0 && (
                 <div  
                     className='mx-16'
-                     data-aos="zoom-in-right"
-                    data-aos-anchor-placement="top-center" 
+                    data-aos="zoom-in-right"
                     onMouseEnter={() => setShowArrows(true)}
                     onMouseLeave={() => setShowArrows(false)}
                 >
-                    <h1 className='mt-8 text-lg lg:text-2xl font-bold mb-4 capitalize'>Casts</h1>
+                    <h1 className='text-lg lg:text-2xl font-bold mb-4 capitalize'>Casts</h1>
                     <div className='flex space-x-4 sm:space-x-10 w-full items-center overflow-x-scroll scrollbar-hide mt-8' ref={sliderRef1}>
                         {cast?.map((item, id) => (
                             <Link to={`/cast/${item.id}`} key={id} className='flex flex-col items-center'>
@@ -319,8 +339,7 @@ const Details = () => {
             )}
             {similarContent.length > 0 && (
             <div 
-                 data-aos="zoom-in-right"
-                data-aos-anchor-placement="top-center" 
+                data-aos="zoom-in-right"
                 onMouseEnter={() => setShowArrows(true)}
                 onMouseLeave={() => setShowArrows(false)} 
                 className='px-4 sm:px-8 lg:px-12 relative'
@@ -349,7 +368,6 @@ const Details = () => {
             {trailers.length > 0 && (
             <div 
                 data-aos="zoom-in-right"
-                data-aos-anchor-placement="top-center" 
                 onMouseEnter={() => setShowArrows(true)}
                 onMouseLeave={() => setShowArrows(false)} 
                 className='px-12 relative mt-32 justify-center items-center'

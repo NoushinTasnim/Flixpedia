@@ -47,7 +47,6 @@ const Categorical = ({category}) => {
     return (
     <div 
       data-aos="fade-up"
-      data-aos-anchor-placement="top-center"
       className='relative text-white px-5 md:px-20' 
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}

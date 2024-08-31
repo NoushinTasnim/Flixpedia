@@ -4,8 +4,13 @@ import axios from 'axios';
 import { SMALL_IMG_BASE_URL } from '../utils/constants';
 import { useContentStore } from '../store/content';
 import { useNavigate } from 'react-router-dom';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const SearchPage = () => {
+  useEffect(()=>{
+      Aos.init();
+    },[])
   const [searchTxt, setSearchTxt] = useState('');
   const [searchedData, setSearchedData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -95,6 +100,7 @@ const SearchPage = () => {
           {error && <p className='text-red-500'>{error}</p>}
           {!loading && !error && searchedData.length > 0 && searchedData.map((item) => (
             <div 
+              data-aos="zoom-in"
               key={item.id} 
               className='flex flex-col'
               onClick={()=>{

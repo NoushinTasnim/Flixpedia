@@ -24,6 +24,14 @@ const userSchema = new mongoose.Schema(
             type: Array,
             default: [],
         },
+        savedMovie: {
+            type: Array,
+            default: [],
+        },
+        savedSeries: {
+            type: Array,
+            default: [],
+        },
     },
     {
         timestamps: true

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Trend = ({ img1, item }) => {
     const navigate = useNavigate();
-    const {smallImgLoad, setSmallImgLoad} = useState(true);
+    const [smallImgLoad, setSmallImgLoad] = useState(true);
     
     const handleClick = (e) => {
       e.preventDefault();

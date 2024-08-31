@@ -15,7 +15,7 @@ export async function getSearchedMovie(req, res){
                     searchHistory: {
                         id: response.results[0].id,
                         image: response.results[0].poster_path,
-                        title: response.results[0].name,
+                        title: response.results[0].title,
                         searchType: 'movie',
                         createdAt: new Date()
                     }

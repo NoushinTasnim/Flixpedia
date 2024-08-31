@@ -59,6 +59,17 @@ const Navbar = () => {
                                 Series
                             </Link>
                         </li>
+                        <li 
+                            className='px-4 text-[#e7e7e7] hover:text-[#ffffff9b]'
+                            >
+                            <Link 
+                                to='/my-list' 
+                                onClick={() => setContentType('tv')}
+                                className=' text-[#e7e7e7] hover:text-[#ffffff9b]'
+                            >
+                                My List
+                            </Link>
+                            </li>
                     </ul>
             </div>
             <div className='flex justify-evenly space-x-4 sm:space-x-8 items-center'>
