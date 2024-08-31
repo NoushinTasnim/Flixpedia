@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
 import './Hero.css';
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import useGetTrendingContent from '../hooks/useGetTrendingContent';
 import { ORIGINAL_IMG_BASE_URL } from '../utils/constants';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Hero = () => {
+  useEffect(()=>{
+    Aos.init();
+  },[])
+
   const {trendingContent} = useGetTrendingContent();
   const [imgLoading, setImgLoading] = useState(true);
 
@@ -19,7 +25,7 @@ const Hero = () => {
   return (
     <div className='h-[50vh] lg:h-[100vh] w-full'>
       <div className='mask1'>
-        <div>
+        <div data-aos="zoom-out">
           {imgLoading && (
             <div className='absolute top-0 left-0 w-full h-[100vh] bg-[#101010] flex items-center justify-center -z-10 shimmer'/>
           )}
@@ -32,7 +38,7 @@ const Hero = () => {
           />
         </div>
       </div>
-      <div className='absolute top-1/4 xs:left-8 xs:right-8 mx-4 sm:left-12 text-left z-10 lg:top-1/3'>
+      <div data-aos="zoom-out" className='absolute top-1/4 xs:left-8 xs:right-8 mx-4 sm:left-12 text-left z-10 lg:top-1/3'>
         <h1 className='text-base xs:text-2xl sm:text-4xl lg:text-6xl font-rye tracking-tighter sm:tracking-wide font-semibold'>
           {trendingContent ? (trendingContent.title ? trendingContent.title : trendingContent.name ) : "hoo"}
         </h1>

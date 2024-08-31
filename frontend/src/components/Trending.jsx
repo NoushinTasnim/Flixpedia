@@ -13,6 +13,8 @@ import ten from '../assets/10.svg'
 import { useContentStore } from '../store/content';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import axios from 'axios';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const trendingData = [
     { img1: one },
@@ -28,6 +30,10 @@ const trendingData = [
 ];
 
 const Trending = () => {
+    useEffect(()=>{
+        Aos.init();
+      },[])
+
     const { contentType } = useContentStore();
     const [content, setContent] = useState([]);
     const [showArrows, setShowArrows] = useState(false);
@@ -59,9 +65,13 @@ const Trending = () => {
       };
     
     return (
-        <div className='relative text-white px-5 md:px-20'
-        onMouseEnter={() => setShowArrows(true)}
-        onMouseLeave={() => setShowArrows(false)}>
+        <div 
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom" 
+            className='relative text-white px-5 md:px-20'
+            onMouseEnter={() => setShowArrows(true)}
+            onMouseLeave={() => setShowArrows(false)}
+        >
             <h1 className='mt-16 mb-0 text-lg lg:text-2xl font-bold'>
                 Trending Today
             </h1>

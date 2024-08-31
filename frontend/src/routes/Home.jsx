@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {Form, Link, useNavigate} from 'react-router-dom'
 import Logo from '../assets/logo.svg'
 import '../index.css'
 import BackDrop from '../assets/backdrop.png'
+import Typed from 'typed.js'
 
 const Home = () => {
+    const typeRef = useRef(null);
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
@@ -12,6 +14,28 @@ const Home = () => {
         e.preventDefault();
         navigate('/register?email=' + email);
     };
+
+    useEffect(()=> {
+        const options = {
+            strings: [
+                'Unlimited movies, TV shows, and more',
+                "Discover all in one place",
+                "Find your desired contents"
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            smartBackspace: true,
+            loop: true
+        };
+        const typed = new Typed(
+            typeRef.current,
+            options
+        );
+
+        return () => {
+            typed.destroy();
+        }
+    }, []);
 
     return (
         <div className='hero'>
@@ -25,8 +49,9 @@ const Home = () => {
                 </Link>
             </div>
             <div className='w-full flex flex-col z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center justify-center items-center px-8 py-4 sm:px-16  sm:w-3/4 xl:w-2/4'>
-                <h1 className='font-extralight text-4xl lg:text-7xl sm:text-5x1'>
-                    Unlimited movies, TV shows, and more
+                <h1 ref={typeRef}
+                    className='font-extralight text-4xl lg:text-7xl sm:text-5x1'>
+                    
                 </h1>
                 <h4 className='font-extralight text-sm mt-4 text-gray-300'>
                     Ready to discover? Enter your email.

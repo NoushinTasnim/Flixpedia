@@ -9,8 +9,14 @@ import CategoricalBox from '../components/CategoricalBox';
 import man from '../assets/images.png';
 import countries from '../utils/countries';
 import Navbar from '../components/Navbar';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Details = () => {
+    useEffect(()=>{
+        Aos.init();
+      },[])
+
     const {id} = useParams();
     const [trailers, setTrailers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -184,6 +190,7 @@ const Details = () => {
                             <div className=' bg-[#101010] flex items-center justify-center -z-10 shimmer'/>
                         )}
                         <img 
+                            data-aos="fade-right"
                             className='h-[40vh] rounded-xl'
                             onLoad={()=>{setPosterLoading(false)}}
                             src={ORIGINAL_IMG_BASE_URL + posters[posterIdx].file_path}
@@ -196,7 +203,7 @@ const Details = () => {
                         </button>
                     </div>
                 )}
-                <div className='relative sm:px-4 lg:px-8 z-10 space-y-4 mt-8 lg:mt-0 lg:mr-8 lg:basis-2/5'>
+                <div data-aos="fade-left" className='relative sm:px-4 lg:px-8 z-10 space-y-4 mt-8 lg:mt-0 lg:mr-8 lg:basis-2/5'>
                     <h4 className=''>Overview</h4>
                     <p className='lg:max-w-lg font-extralight'>{content?.overview}</p>
                     <p>
@@ -256,7 +263,7 @@ const Details = () => {
                         </h3>
                     </div>
                 </div>
-                <div className='relative lg:px-8 sm:px-4 z-10 space-y-4 basis-2/5'>
+                <div data-aos="fade-left" className='relative lg:px-8 sm:px-4 z-10 space-y-4 basis-2/5'>
                     <h4 className=''>Keywords</h4>
                     {keyword?.length > 0 && (
                         <div className='flex flex-wrap w-full items-center'>
@@ -272,11 +279,13 @@ const Details = () => {
 
             {cast?.length > 0 && (
                 <div  
-                    className='px-4 sm:px-8 lg:px-12 relative' 
+                    className='mx-16'
+                     data-aos="zoom-in-right"
+                    data-aos-anchor-placement="top-center" 
                     onMouseEnter={() => setShowArrows(true)}
                     onMouseLeave={() => setShowArrows(false)}
                 >
-                    <h1 className='text-lg sm text-lg:lg:text-2xl font-bold mb-4 capitalize'>Casts</h1>
+                    <h1 className='mt-8 text-lg lg:text-2xl font-bold mb-4 capitalize'>Casts</h1>
                     <div className='flex space-x-4 sm:space-x-10 w-full items-center overflow-x-scroll scrollbar-hide mt-8' ref={sliderRef1}>
                         {cast?.map((item, id) => (
                             <Link to={`/cast/${item.id}`} key={id} className='flex flex-col items-center'>
@@ -310,6 +319,8 @@ const Details = () => {
             )}
             {similarContent.length > 0 && (
             <div 
+                 data-aos="zoom-in-right"
+                data-aos-anchor-placement="top-center" 
                 onMouseEnter={() => setShowArrows(true)}
                 onMouseLeave={() => setShowArrows(false)} 
                 className='px-4 sm:px-8 lg:px-12 relative'
@@ -337,6 +348,8 @@ const Details = () => {
             )}
             {trailers.length > 0 && (
             <div 
+                data-aos="zoom-in-right"
+                data-aos-anchor-placement="top-center" 
                 onMouseEnter={() => setShowArrows(true)}
                 onMouseLeave={() => setShowArrows(false)} 
                 className='px-12 relative mt-32 justify-center items-center'

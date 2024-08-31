@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../assets/logo2.svg';
 import { Link } from 'react-router-dom';
 import { FaBars, FaSearch, FaSignOutAlt, FaTimes } from 'react-icons/fa';
 import { useAuthStore } from '../store/authUser';
 import { useContentStore } from '../store/content';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Navbar = () => {
+    useEffect(()=>{
+        Aos.init();
+      },[])
     const {user, logOut} = useAuthStore();
     const {setContentType} = useContentStore();
     const [click, setclick]= useState(false);
@@ -24,7 +29,9 @@ const Navbar = () => {
     window.addEventListener("scroll", changeColor);
 
     return (
-        <div className={color ?
+        <div
+            data-aos="fade-down" 
+            className={color ?
              "w-full justify-between items-center px-4 sm:px-8 py-4 fixed h-[60px] z-40 flex bg-[#101010] transition-opacity duration-500-" : 
              "w-full justify-between items-center px-4 sm:px-8 py-4 fixed h-[60px] z-40 flex"
             }

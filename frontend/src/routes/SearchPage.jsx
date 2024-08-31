@@ -53,7 +53,7 @@ const SearchPage = () => {
           type="string"
           placeholder="Search Movies, TV Shows and Persons..."
           name="search"
-          className='w-1/2 text-left bg-[#63636340] border rounded-full px-4 py-2 text-white text-sm'
+          className='w-1/2 text-left bg-transparent border-b-2 border-red-500 px-4 py-2 text-white text-sm'
           required
           value={searchTxt}
           onChange={(e) => setSearchTxt(e.target.value)}

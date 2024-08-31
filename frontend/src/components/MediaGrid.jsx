@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SMALL_IMG_BASE_URL } from '../utils/constants';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const MediaGrid = ({ title, items, initialCount = 8 }) => {
     const [showAll, setShowAll] = useState(false);
+    useEffect(()=>{
+        Aos.init();
+      },[])
+
 
     return (
-        <div className='w-full'>
+        <div data-aos="zoom-in-right" className='w-full'>
             <div className='flex justify-between items-center mb-4 mt-16'>
                 <h1 className='text-xl font-bold'>{title}</h1>
                 {items.length > initialCount && (

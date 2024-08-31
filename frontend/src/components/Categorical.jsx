@@ -3,8 +3,14 @@ import CategoricalBox from './CategoricalBox';
 import { useContentStore } from '../store/content';
 import axios from 'axios';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Categorical = ({category}) => {
+    useEffect(()=>{
+      Aos.init();
+    },[])
+
     const {contentType} = useContentStore();
     const [content, setContent] = useState([]);
     const [showArrows, setShowArrows] = useState(false);
@@ -40,6 +46,8 @@ const Categorical = ({category}) => {
     };
     return (
     <div 
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-center"
       className='relative text-white px-5 md:px-20' 
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}

@@ -62,7 +62,7 @@ const CastDetails = () => {
             <Navbar/>
             <div className='py-24 px-16 space-y-8'>
                 <CastHeader cast={cast} />
-                {castMovies.length > 0 && <MediaGrid title="Movies (Actor)" items={castMovies} />}
+                {castMovies.length > 0 && <MediaGrid  title="Movies (Actor)" items={castMovies} />}
                 {castSeries.length > 0 && <MediaGrid title="Series (Actor)" items={castSeries} />}
                 {castMovieCrew.length > 0 && <MediaGrid title="Movies (Crew)" items={castMovieCrew} />}
                 {castSeriesCrew.length > 0 && <MediaGrid title="Series (Crew)" items={castSeriesCrew} />}
